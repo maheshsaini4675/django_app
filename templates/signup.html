@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+{% include "nav.html" %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CodePen - Glassmorphism Login</title>
+    <link rel="stylesheet" href="/static/style.css">
+
+</head>
+
+<body>
+    <!-- partial:index.partial.html -->
+
+    <body>
+        {% comment %} {% if messages %}
+        <div class="alert alert-warning" role="alert">
+            <ul class="messages">
+                {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+                    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+                    {{ message }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %} {% endcomment %}
+
+
+        <div class="modal" tabindex="-1">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Login Account</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    {% if messages %}
+                    <div class="alert alert-warning" role="alert">
+                        <ul class="messages">
+                            {% for message in messages %}
+                            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+                                {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+                                {{ message }}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+        <section class="container">
+            <div class="login-container">
+                <div class="circle circle-one"></div>
+                <div class="form-container">
+                    <img src="https://raw.githubusercontent.com/hicodersofficial/glassmorphism-login-form/master/assets/illustration.png"
+                        alt="illustration" class="illustration" />
+                    <h1 class="opacity">SIGNUP</h1>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input type="text" name="username" Required placeholder="USERNAME" />
+                        <input type="password" name="password" Required placeholder="PASSWORD" />
+                        <button class="opacity">SUBMIT</button>
+                    </form>
+                    <div class="register-forget opacity">
+                        <a href="">REGISTER</a>
+                        <a href="">FORGOT PASSWORD</a>
+                    </div>
+                </div>
+                <div class="circle circle-two"></div>
+            </div>
+            <div class="theme-btn-container"></div>
+        </section>
+    </body>
+    <!-- partial -->
+    <script>
+        const themes = [
+            {
+                background: "#1A1A2E",
+                color: "#FFFFFF",
+                primaryColor: "#0F3460"
+            },
+            {
+                background: "#461220",
+                color: "#FFFFFF",
+                primaryColor: "#E94560"
+            },
+            {
+                background: "#192A51",
+                color: "#FFFFFF",
+                primaryColor: "#967AA1"
+            },
+            {
+                background: "#F7B267",
+                color: "#000000",
+                primaryColor: "#F4845F"
+            },
+            {
+                background: "#F25F5C",
+                color: "#000000",
+                primaryColor: "#642B36"
+            },
+            {
+                background: "#231F20",
+                color: "#FFF",
+                primaryColor: "#BB4430"
+            }
+        ];
+
+        const setTheme = (theme) => {
+            const root = document.querySelector(":root");
+            root.style.setProperty("--background", theme.background);
+            root.style.setProperty("--color", theme.color);
+            root.style.setProperty("--primary-color", theme.primaryColor);
+            root.style.setProperty("--glass-color", theme.glassColor);
+        };
+
+        const displayThemeButtons = () => {
+            const btnContainer = document.querySelector(".theme-btn-container");
+            themes.forEach((theme) => {
+                const div = document.createElement("div");
+                div.className = "theme-btn";
+                div.style.cssText = `background: ${theme.background}; width: 25px; height: 25px`;
+                btnContainer.appendChild(div);
+                div.addEventListener("click", () => setTheme(theme));
+            });
+        };
+
+        displayThemeButtons();
+
+    </script>
+
+</body>
+
+</html>

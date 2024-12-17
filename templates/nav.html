@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Python Programming Web development</title>
+</head>
+
+<body>
+    <!-- navbar -->
+    {% block content %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-info">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-uppercase">
+                    <li class="nav-item px-3">
+                        <a class="nav-link active" aria-current="page" href="/home">Home</a>
+                    </li>
+                    <li class="nav-item px-3">
+                        <a class="nav-link active" aria-current="page" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item px-3">
+                        <a class="nav-link active" aria-current="page" href="service html">Services</a>
+                    </li>
+                    <li class="nav-item px-3">
+                        <a class="nav-link active" aria-current="page" href="{% url 'accounts:contact_view' %}">Contact Us</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success me-2" type="submit">Search</button>
+                </form>
+                <div class="mx-2">
+                    <button type="submit" class="btn btn-outline-primary me-2"><a href="{% url 'accounts:login' %}"
+                    style="color:blue;">Login</button>
+
+                    <button type="submit" class="btn btn-outline-primary me-2"><a href="{% url 'accounts:signup' %}"
+                    style="color:blue;">Sign Up</a></button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    {% endblock content %}
+
+    <!-- navbar -->
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+{% include "nav.html" %}
+
+<div class="container mt-5">
+    {{post.vehicle}}
+    <form method="POST">
+        {% csrf_token %}
+        <h1>Delete Post</h1>
+        <p>Are you sure delete post</p>
+        <button type="submit" class="btn btn-secondary"><a href="{% url 'accounts:home' %}">Cancel</a></button>
+        <button type="submit" class="btn btn-success">Delete</button>
+    </form>
+</div>
